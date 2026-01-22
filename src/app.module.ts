@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TenantsModule } from './tenants/tenants.module';
 import { SeedsModule } from './seeds/seeds.module';
+import { ClientsModule } from './clients/clients.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { SeedsModule } from './seeds/seeds.module';
     UsersModule,
     TenantsModule,
     SeedsModule,
+    ClientsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

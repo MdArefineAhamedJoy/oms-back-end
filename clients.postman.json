@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "OMHS - Clients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Create Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"<TENANT_ID>\",\n  \"name\": \"ABC Corporation\",\n  \"contactPerson\": \"John Doe\",\n  \"email\": \"contact@abc-corp.com\",\n  \"phone\": \"+65-6234-5678\",\n  \"address\": \"123 Business Park, Singapore\",\n  \"clientStatus\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Get All Clients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Get Client by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "clients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<CLIENT_ID>"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Client",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Client Name\",\n  \"contactPerson\": \"Jane Smith\",\n  \"clientStatus\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "clients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<CLIENT_ID>"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Client",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "clients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<CLIENT_ID>"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
