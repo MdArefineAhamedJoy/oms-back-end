@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "OMHS Tenants API",
+    "description": "Tenants CRUD and Seed API collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Seed Tenants",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/seeds/tenants",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "seeds", "tenants"]
+        },
+        "description": "Seed 5 fake tenants into database"
+      }
+    },
+    {
+      "name": "Create Tenant",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Security Company\",\n  \"tenantCode\": \"TEST001\",\n  \"email\": \"admin@testsecurity.com\",\n  \"phone\": \"+65-6123-9999\",\n  \"licenseNumber\": \"LG-2024-TEST\",\n  \"subscriptionPlan\": \"BASIC\",\n  \"maxSites\": 5,\n  \"maxUsers\": 50,\n  \"tenantStatus\": \"ACTIVE\",\n  \"settings\": {\n    \"timezone\": \"Asia/Singapore\",\n    \"currency\": \"SGD\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/tenants",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "tenants"]
+        },
+        "description": "Create a new tenant"
+      }
+    },
+    {
+      "name": "Get All Tenants",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/tenants",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "tenants"]
+        },
+        "description": "Get all tenants"
+      }
+    },
+    {
+      "name": "Get Tenant by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/tenants/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "tenants", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{tenantId}}",
+              "description": "Tenant ID from database"
+            }
+          ]
+        },
+        "description": "Get a specific tenant by ID"
+      }
+    },
+    {
+      "name": "Update Tenant",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Security Company\",\n  \"subscriptionPlan\": \"PREMIUM\",\n  \"maxSites\": 100,\n  \"maxUsers\": 1000\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/tenants/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "tenants", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{tenantId}}",
+              "description": "Tenant ID from database"
+            }
+          ]
+        },
+        "description": "Update a tenant by ID"
+      }
+    },
+    {
+      "name": "Delete Tenant",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/tenants/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "tenants", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{tenantId}}",
+              "description": "Tenant ID from database"
+            }
+          ]
+        },
+        "description": "Delete a tenant by ID"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "tenantId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

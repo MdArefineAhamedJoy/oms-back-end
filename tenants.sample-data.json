@@ -1,0 +1,15 @@
+{
+  "name": "SecureGuard Solutions Pte Ltd",
+  "tenantCode": "SECURE001",
+  "email": "admin@secureguard.com",
+  "phone": "+65-6123-4567",
+  "licenseNumber": "LG-2024-001",
+  "subscriptionPlan": "PREMIUM",
+  "maxSites": 50,
+  "maxUsers": 500,
+  "tenantStatus": "ACTIVE",
+  "settings": {
+    "timezone": "Asia/Singapore",
+    "currency": "SGD"
+  }
+}
