@@ -16,6 +16,9 @@ import { ShiftTypesModule } from './shift-types/shift-types.module';
 import { LeavePoliciesModule } from './leave-policies/leave-policies.module';
 import { SettingsModule } from './settings/settings.module';
 import { IncidentTypesModule } from './incident-types/incident-types.module';
+import { IncidentSubtypesModule } from './incident-subtypes/incident-subtypes.module';
+import { PatrolRoutesModule } from './patrol-routes/patrol-routes.module';
+import { CheckpointsModule } from './checkpoints/checkpoints.module';
 
 @Module({
   imports: [
@@ -41,6 +44,9 @@ import { IncidentTypesModule } from './incident-types/incident-types.module';
     LeavePoliciesModule,
     SettingsModule,
     IncidentTypesModule,
+    IncidentSubtypesModule,
+    PatrolRoutesModule,
+    CheckpointsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
