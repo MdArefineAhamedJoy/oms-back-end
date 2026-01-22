@@ -5,6 +5,17 @@ import { Tenant, TenantDocument } from './schemas/tenant.schema';
 import { CreateTenantDto } from './dto/create-tenant.dto';
 import { UpdateTenantDto } from './dto/update-tenant.dto';
 
+interface PaginationResult<T> {
+  data: T[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
 @Injectable()
 export class TenantsService {
   constructor(
@@ -17,8 +28,26 @@ export class TenantsService {
     return tenant.save();
   }
 
-  async findAll(): Promise<Tenant[]> {
-    return this.tenantModel.find().exec();
+  async findAll(
+    page: number = 1,
+    limit: number = 10,
+  ): Promise<PaginationResult<Tenant>> {
+    const skip = (page - 1) * limit;
+    const [data, total] = await Promise.all([
+      this.tenantModel.find().skip(skip).limit(limit).exec(),
+      this.tenantModel.countDocuments(),
+    ]);
+
+    return {
+      data,
+      pagination: {
+        page,
+        pageSize: limit,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   }
 
   async findOne(id: string): Promise<Tenant> {

@@ -9,6 +9,9 @@ import {
   HttpCode,
   HttpStatus,
   UsePipes,
+  Query,
+  ParseIntPipe,
+  DefaultValuePipe,
 } from '@nestjs/common';
 import { TenantsService } from './tenants.service';
 import { createTenantSchema, updateTenantSchema } from './dto';
@@ -32,12 +35,15 @@ export class TenantsController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  async findAll() {
-    const tenants = await this.tenantsService.findAll();
+  async findAll(
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+  ) {
+    const result = await this.tenantsService.findAll(page, limit);
     return {
       success: true,
       statusCode: HttpStatus.OK,
-      data: tenants,
+      ...result,
     };
   }
 

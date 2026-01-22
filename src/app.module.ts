@@ -9,8 +9,8 @@ import { mongooseConfig } from './config/mongoose.config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TenantsModule } from './tenants/tenants.module';
-import { SeedsModule } from './seeds/seeds.module';
 import { ClientsModule } from './clients/clients.module';
+import { SitesModule } from './sites/sites.module';
 
 @Module({
   imports: [
@@ -29,8 +29,8 @@ import { ClientsModule } from './clients/clients.module';
     AuthModule,
     UsersModule,
     TenantsModule,
-    SeedsModule,
     ClientsModule,
+    SitesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -14,25 +14,25 @@ import {
   ParseIntPipe,
   DefaultValuePipe,
 } from '@nestjs/common';
-import { ClientsService } from './clients.service';
-import { createClientSchema, updateClientSchema } from './dto';
+import { SitesService } from './sites.service';
+import { createSiteSchema, updateSiteSchema } from './dto';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { MongoError } from 'mongodb';
 
-@Controller('clients')
-export class ClientsController {
-  constructor(private readonly clientsService: ClientsService) {}
+@Controller('sites')
+export class SitesController {
+  constructor(private readonly sitesService: SitesService) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @UsePipes(new ZodValidationPipe(createClientSchema))
-  async create(@Body() createClientDto: any) {
+  @UsePipes(new ZodValidationPipe(createSiteSchema))
+  async create(@Body() createSiteDto: any) {
     try {
-      const client = await this.clientsService.create(createClientDto);
+      const site = await this.sitesService.create(createSiteDto);
       return {
         success: true,
         statusCode: HttpStatus.CREATED,
-        data: client,
+        data: site,
       };
     } catch (error) {
       if ((error as MongoError).code === 11000) {
@@ -51,7 +51,7 @@ export class ClientsController {
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
   ) {
-    const result = await this.clientsService.findAll(page, limit);
+    const result = await this.sitesService.findAll(page, limit);
     return {
       success: true,
       statusCode: HttpStatus.OK,
@@ -62,24 +62,24 @@ export class ClientsController {
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   async findOne(@Param('id') id: string) {
-    const client = await this.clientsService.findOne(id);
+    const site = await this.sitesService.findOne(id);
     return {
       success: true,
       statusCode: HttpStatus.OK,
-      data: client,
+      data: site,
     };
   }
 
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @UsePipes(new ZodValidationPipe(updateClientSchema))
-  async update(@Param('id') id: string, @Body() updateClientDto: any) {
+  @UsePipes(new ZodValidationPipe(updateSiteSchema))
+  async update(@Param('id') id: string, @Body() updateSiteDto: any) {
     try {
-      const client = await this.clientsService.update(id, updateClientDto);
+      const site = await this.sitesService.update(id, updateSiteDto);
       return {
         success: true,
         statusCode: HttpStatus.OK,
-        data: client,
+        data: site,
       };
     } catch (error) {
       if ((error as MongoError).code === 11000) {
@@ -95,6 +95,6 @@ export class ClientsController {
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {
-    await this.clientsService.remove(id);
+    await this.sitesService.remove(id);
   }
 }

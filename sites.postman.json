@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "OMHS - Sites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sites",
+      "item": [
+        {
+          "name": "Create Site",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantId\": \"<TENANT_ID>\",\n  \"name\": \"Changi Airport Terminal 1\",\n  \"siteCode\": \"SIN001\",\n  \"address\": \"Airport Boulevard, Singapore 819663\",\n  \"coordinates\": {\n    \"lat\": 1.3644,\n    \"lng\": 103.9915\n  },\n  \"geofenceRadius\": 500,\n  \"timezone\": \"Asia/Singapore\",\n  \"siteStatus\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "sites"]
+            }
+          }
+        },
+        {
+          "name": "Get All Sites",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "sites"]
+            }
+          }
+        },
+        {
+          "name": "Get Site by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "sites", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<SITE_ID>"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Site",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Site Name\",\n  \"geofenceRadius\": 750,\n  \"siteStatus\": \"ACTIVE\"\n}"
+            },
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "sites", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<SITE_ID>"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Site",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "baseURL": "http://localhost:3000",
+              "path": ["api", "v1", "sites", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "<SITE_ID>"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

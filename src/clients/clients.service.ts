@@ -5,6 +5,17 @@ import { Client, ClientDocument } from './schemas/client.schema';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 
+interface PaginationResult<T> {
+  data: T[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
 @Injectable()
 export class ClientsService {
   constructor(
@@ -17,8 +28,26 @@ export class ClientsService {
     return client.save();
   }
 
-  async findAll(): Promise<Client[]> {
-    return this.clientModel.find().exec();
+  async findAll(
+    page: number = 1,
+    limit: number = 10,
+  ): Promise<PaginationResult<Client>> {
+    const skip = (page - 1) * limit;
+    const [data, total] = await Promise.all([
+      this.clientModel.find().skip(skip).limit(limit).exec(),
+      this.clientModel.countDocuments(),
+    ]);
+
+    return {
+      data,
+      pagination: {
+        page,
+        pageSize: limit,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   }
 
   async findOne(id: string): Promise<Client> {

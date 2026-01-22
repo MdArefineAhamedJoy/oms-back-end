@@ -1,0 +1,13 @@
+{
+  "tenantId": "<TENANT_ID>",
+  "name": "Marina Bay Sands",
+  "siteCode": "MBS001",
+  "address": "10 Bayfront Avenue, Singapore 018956",
+  "coordinates": {
+    "lat": 1.2836,
+    "lng": 103.8607
+  },
+  "geofenceRadius": 500,
+  "timezone": "Asia/Singapore",
+  "siteStatus": "ACTIVE"
+}
