@@ -11,6 +11,11 @@ import { UsersModule } from './users/users.module';
 import { TenantsModule } from './tenants/tenants.module';
 import { ClientsModule } from './clients/clients.module';
 import { SitesModule } from './sites/sites.module';
+import { UserProfilesModule } from './user-profiles/user-profiles.module';
+import { ShiftTypesModule } from './shift-types/shift-types.module';
+import { LeavePoliciesModule } from './leave-policies/leave-policies.module';
+import { SettingsModule } from './settings/settings.module';
+import { IncidentTypesModule } from './incident-types/incident-types.module';
 
 @Module({
   imports: [
@@ -31,6 +36,11 @@ import { SitesModule } from './sites/sites.module';
     TenantsModule,
     ClientsModule,
     SitesModule,
+    UserProfilesModule,
+    ShiftTypesModule,
+    LeavePoliciesModule,
+    SettingsModule,
+    IncidentTypesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
