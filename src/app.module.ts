@@ -25,6 +25,8 @@ import { PatrolScansModule } from './patrol-scans/patrol-scans.module';
 import { IncidentsModule } from './incidents/incidents.module';
 import { VisitorsModule } from './visitors/visitors.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
+import { LeaveRequestsModule } from './leave-requests/leave-requests.module';
+import { LeaveBalancesModule } from './leave-balances/leave-balances.module';
 
 @Module({
   imports: [
@@ -59,6 +61,8 @@ import { VehiclesModule } from './vehicles/vehicles.module';
     IncidentsModule,
     VisitorsModule,
     VehiclesModule,
+    LeaveRequestsModule,
+    LeaveBalancesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
