@@ -19,6 +19,12 @@ import { IncidentTypesModule } from './incident-types/incident-types.module';
 import { IncidentSubtypesModule } from './incident-subtypes/incident-subtypes.module';
 import { PatrolRoutesModule } from './patrol-routes/patrol-routes.module';
 import { CheckpointsModule } from './checkpoints/checkpoints.module';
+import { ShiftsModule } from './shifts/shifts.module';
+import { PatrolsModule } from './patrols/patrols.module';
+import { PatrolScansModule } from './patrol-scans/patrol-scans.module';
+import { IncidentsModule } from './incidents/incidents.module';
+import { VisitorsModule } from './visitors/visitors.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
 
 @Module({
   imports: [
@@ -47,6 +53,12 @@ import { CheckpointsModule } from './checkpoints/checkpoints.module';
     IncidentSubtypesModule,
     PatrolRoutesModule,
     CheckpointsModule,
+    ShiftsModule,
+    PatrolsModule,
+    PatrolScansModule,
+    IncidentsModule,
+    VisitorsModule,
+    VehiclesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
