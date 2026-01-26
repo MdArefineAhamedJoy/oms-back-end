@@ -1,0 +1,63 @@
+import { z } from 'zod';
+
+export const createOccurrenceBookSchema = z.object({
+  tenant: z.string().optional(),
+  site: z.string().optional(),
+  entryNumber: z.string().max(50),
+  shift: z.string().optional(),
+  user: z.string().optional(),
+  entryType: z.enum(['ROUTINE', 'INCIDENT', 'VISITOR', 'PATROL', 'HANDOVER', 'OTHERS']),
+  subject: z.string().max(255),
+  content: z.record(z.any()),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']),
+  assignedTo: z.string().optional(),
+  acknowledgmentRequired: z.boolean().default(false),
+  acknowledgedBy: z.string().optional(),
+  acknowledgedAt: z.coerce.date().optional(),
+  acknowledgmentStatus: z.enum(['PENDING', 'ACKNOWLEDGED']).nullable().optional(),
+  followUpRequired: z.boolean().default(false),
+  followUpStatus: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED']).optional(),
+  linkedIncident: z.string().optional(),
+  assignmentTrail: z.array(z.any()).optional(),
+  archived: z.boolean().default(false),
+  archivedReason: z.string().optional(),
+  archivedAt: z.coerce.date().optional(),
+  archivedBy: z.string().optional(),
+  supervisorReview: z.string().optional(),
+  reviewedBy: z.string().optional(),
+  reviewedAt: z.coerce.date().optional(),
+  attachments: z.array(z.string()).optional(),
+});
+
+export type CreateOccurrenceBookDto = z.infer<typeof createOccurrenceBookSchema>;
+
+export const updateOccurrenceBookSchema = z.object({
+  tenant: z.string().optional(),
+  site: z.string().optional(),
+  entryNumber: z.string().max(50).optional(),
+  shift: z.string().optional(),
+  user: z.string().optional(),
+  entryType: z.enum(['ROUTINE', 'INCIDENT', 'VISITOR', 'PATROL', 'HANDOVER', 'OTHERS']).optional(),
+  subject: z.string().max(255).optional(),
+  content: z.record(z.any()).optional(),
+  priority: z.enum(['LOW', 'MEDIUM', 'HIGH', 'URGENT']).optional(),
+  assignedTo: z.string().optional(),
+  acknowledgmentRequired: z.boolean().optional(),
+  acknowledgedBy: z.string().optional(),
+  acknowledgedAt: z.coerce.date().optional(),
+  acknowledgmentStatus: z.enum(['PENDING', 'ACKNOWLEDGED']).nullable().optional(),
+  followUpRequired: z.boolean().optional(),
+  followUpStatus: z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED']).optional(),
+  linkedIncident: z.string().optional(),
+  assignmentTrail: z.array(z.any()).optional(),
+  archived: z.boolean().optional(),
+  archivedReason: z.string().optional(),
+  archivedAt: z.coerce.date().optional(),
+  archivedBy: z.string().optional(),
+  supervisorReview: z.string().optional(),
+  reviewedBy: z.string().optional(),
+  reviewedAt: z.coerce.date().optional(),
+  attachments: z.array(z.string()).optional(),
+});
+
+export type UpdateOccurrenceBookDto = z.infer<typeof updateOccurrenceBookSchema>;

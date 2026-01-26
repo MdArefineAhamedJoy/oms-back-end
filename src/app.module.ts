@@ -27,6 +27,16 @@ import { VisitorsModule } from './visitors/visitors.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { LeaveRequestsModule } from './leave-requests/leave-requests.module';
 import { LeaveBalancesModule } from './leave-balances/leave-balances.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
+import { AppVersionsModule } from './app-versions/app-versions.module';
+import { CertificatesModule } from './certificates/certificates.module';
+import { ClaimsModule } from './claims/claims.module';
+import { DocumentTablesModule } from './document-tables/document-tables.module';
+import { GeofenceOverridesModule } from './geofence-overrides/geofence-overrides.module';
+import { IncidentSettingsModule } from './incident-settings/incident-settings.module';
+import { OccurrenceBooksModule } from './occurrence-books/occurrence-books.module';
+import { OccurrenceHistoriesModule } from './occurrence-histories/occurrence-histories.module';
+import { PaySlipsModule } from './payslips/payslips.module';
 
 @Module({
   imports: [
@@ -63,6 +73,16 @@ import { LeaveBalancesModule } from './leave-balances/leave-balances.module';
     VehiclesModule,
     LeaveRequestsModule,
     LeaveBalancesModule,
+    AnnouncementsModule,
+    AppVersionsModule,
+    CertificatesModule,
+    ClaimsModule,
+    DocumentTablesModule,
+    GeofenceOverridesModule,
+    IncidentSettingsModule,
+    OccurrenceBooksModule,
+    OccurrenceHistoriesModule,
+    PaySlipsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
